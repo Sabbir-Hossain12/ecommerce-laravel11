@@ -20,4 +20,16 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //Admin dashboard
-Route::view('/admin/dashboard', 'backend.pages.dashboard')->name('admin.dashboard');
+Route::prefix('/admin')->middleware('admin')->group(function () {
+    Route::view('/dashboard', 'backend.pages.dashboard')->name('admin.dashboard');
+});
+
+Route::prefix('/admin')->group(function () {
+    Route::view('/login','backend.auth.login');
+    
+}
+
+
+);
+
+

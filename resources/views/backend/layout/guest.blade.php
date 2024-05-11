@@ -22,30 +22,9 @@
         <img class="animation__wobble" src="{{asset('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
     </div>
 
-@include('backend.include.navbar')
+    
+    
 
-@include('backend.include.sidebar')
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-       @yield('contentHeader')
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-             hello
-                @yield('mainContents')
-            </div><!--/. container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-
-
-
-@include('backend.include.footer')
 </div>
 <!-- ./wrapper -->
 
