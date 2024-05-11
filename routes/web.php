@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +22,13 @@ require __DIR__.'/auth.php';
 
 //Admin dashboard
 Route::prefix('/admin')->middleware('admin')->group(function () {
+    
     Route::view('/dashboard', 'backend.pages.dashboard')->name('admin.dashboard');
 });
 
 Route::prefix('/admin')->group(function () {
     Route::view('/login','backend.auth.login');
+    Route::post('/login',[AuthController::class,'login'])->name('admin.login');
     
 }
 
