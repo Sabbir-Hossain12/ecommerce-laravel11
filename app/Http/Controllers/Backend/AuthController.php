@@ -10,17 +10,38 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        $data = $request->validate(
+            [
+                'email' => 'required|email|max:255',
+                'password' => 'required|max:30'
+            ]
+        );
 //       dd(request()->all());
-        $email= $request->email;
-        $password=$request->password;
-        $remember= $request->remember;
-        
-        if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password], $remember)) {
+        $email = $request->email;
+        $password = $request->password;
+        $remember = $request->remember;
+
+        if (Auth::guard('admin')->attempt($data, $remember)) {
             $request->session()->regenerate();
-            
+
             return redirect('admin/dashboard');
         }
-        
-        return redirect()->back()->with(['error'=>'Login Failed']);
+
+        return redirect()->back()->with(['error' => 'Invalid Credentials']);
     }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+
+        return redirect('admin/login');
+    }
+
+
+    public function one()
+    {
+        
+    }
+    
+    
 }

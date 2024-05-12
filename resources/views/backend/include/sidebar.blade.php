@@ -16,7 +16,11 @@
             <div class="info">
                 <a href="#" class="d-block">Alexander Pierce</a>
             </div>
+
+            
+            
         </div>
+        
 
         <!-- SidebarSearch Form -->
         <div class="form-inline">

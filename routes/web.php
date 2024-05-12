@@ -26,9 +26,19 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::view('/dashboard', 'backend.pages.dashboard')->name('admin.dashboard');
 });
 
+//Admin Auth
 Route::prefix('/admin')->group(function () {
     Route::view('/login','backend.auth.login');
     Route::post('/login',[AuthController::class,'login'])->name('admin.login');
+    Route::get('/logout',[AuthController::class,'logout'])->name('admin.logout');
+    Route::view('/register','backend.auth.register');
+    Route::post('/register',[AuthController::class,'register'])->name('admin.register');
+    Route::view('/forgot-password','backend.auth.forgot-password');
+    Route::post('/forgot-password',[AuthController::class,'forgot-password'])->name('admin.forgot-password');
+    Route::view('/reset-password','backend.auth.reset-password');
+    Route::post('/reset-password',[AuthController::class,'forgot-password'])->name('admin.reset-password');
+    
+    
     
 }
 
